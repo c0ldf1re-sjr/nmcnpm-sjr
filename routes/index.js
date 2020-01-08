@@ -22,6 +22,11 @@ router.get('/add-admin.html', function(req, res, next) {
   res.render('add-admin', { title: 'Express' });
 });
 
+
+router.get('/pending-post.html', function(req, res, next) {
+  res.render('pending_post');
+});
+
 router.get('/admin-login.html', function(req, res, next) {
   res.render('admin-login', { title: 'Express' });
 });

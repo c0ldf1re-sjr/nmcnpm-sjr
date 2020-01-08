@@ -6719,6 +6719,27 @@ form.dropzone {
 }
 
 
+.pending-post{
+    background: #ffffff;
+    margin:10px;
+
+}
+.pending-post .post-info{
+    height: 150px;
+    overflow: hidden;
+}
+.pending-post .post-img{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+.pending-post p{
+    margin: 0;
+}
+.pending-post .name{
+    margin: 0;
+}
+
 
 /*-------------------------------------------------------------------
 Media Query
