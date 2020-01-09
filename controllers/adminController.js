@@ -27,7 +27,7 @@ exports.adminLogin = function (req, res, next) {
 passport.use(new LocalStrategy(function (username, password, done) {
 	Admin.findOne({ username: username }, (err, foundUser) => {
 		if (err) {
-			throw err;
+			return res.status(503).json(error);
 		}
 		if (!foundUser) {
 			return done(null, false, { message: 'Unknown user' });

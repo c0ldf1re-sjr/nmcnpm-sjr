@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs');
 var adminSchema = mongoose.Schema({
 	username: {
 		type: String,
@@ -26,7 +27,6 @@ var adminSchema = mongoose.Schema({
 	categoryId:{
 		type:Schema.Types.ObjectId,
 		ref: 'Category',
-		required:true,
 		default:null
 	},
 	time:{
@@ -41,11 +41,12 @@ var adminSchema = mongoose.Schema({
 
 var Admin = mongoose.model('Admin', adminSchema);
 
-module.exports.comparePassword = (candidatePassword, hash, callback) => {
+module.exports = Admin;
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
 	bcrypt.compare(candidatePassword, hash, function (err, isMatch) {
 		if(err) throw err;
 		callback(null, isMatch);
 	});
 }
 
-module.exports = Admin;
