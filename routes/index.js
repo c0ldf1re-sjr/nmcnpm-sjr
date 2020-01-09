@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 let Admin = require('../models/admin');
+const adminController = require('../controllers/adminController');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	if(req.isAuthenticated()){
@@ -59,8 +61,8 @@ router.get('/add-admin', function(req, res, next) {
 });
 
 
-router.get('/pending-post', function(req, res, next) {
-	res.render('pending_post');
-});
+router.get('/pending-post', adminController.getPendingPosts);
+
+router.get('/accept-post/:id', adminController.acceptPost);
 
 module.exports = router;

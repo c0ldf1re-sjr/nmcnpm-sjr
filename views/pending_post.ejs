@@ -30,7 +30,7 @@
 					<div class="row">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="page-header">
-								<h2 class="pageheader-title">Duyệt bài</h2>
+								<h1	 class="pageheader-title">Duyệt bài</h1	>
 							</div>
 						</div>
 					</div>
@@ -38,51 +38,23 @@
 					<!-- end pageheader  -->
 					<!-- ============================================================== -->
 
-					<div class="row filter p-2">
-						<div class="col-lg-3">
-							<div class="form-group">
-								<label class="col-form-label">Gian hàng</label>
-								<select class="form-control" id="input-select">
-									<option>Điện thoại</option>
-									<option>Máy tính bảng</option>
-									<option>Giày</option>
-									<option>Laptop</option>
-									<option>Xe máy</option>
-								</select>                                            
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="form-group">
-								<label class="col-form-label">Gói đăng</label>
-								<select class="form-control" id="input-select">
-									<option>Vip</option>
-									<option>Thường</option>
-								</select>                                            
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="form-group">
-								<label class="col-form-label">Sắp xếp</label>
-								<select class="form-control" id="input-select">
-									<option>Mới</option>
-									<option>Cũ</option>
-								</select>                                            
-							</div>
-						</div>
-					</div>
-
+					<% for (var i =0; i < posts.length;  i++ ) { %>
 					<div class="row list-pending-post p-2">
 						<div class="pending-post border p-2 w-100">
-							<p>Lúc <b>11:30 30/04/1975</b></p>
+							<p>Lúc <b> <%= posts[i].created_at %> </b> </p>
 							<div class="row">
 								<div class="col-lg-3 post-img">
-									<img src="/images/1.jpg" width="100%">
+									<img src="<%= posts[i].images %>" width="100%">
 								</div>
 								<div class="col-lg-9">
-									<h4 class="name">Tên sản phẩm</h4>
-									<a href="#">Loại sản phẩm</a>
+									<h4 class="name">Tên sản phẩm: <%= posts[i].name %> </h4>
+									<h4 class="name">Giá: <%= posts[i].price %> </h4>
+									<h4 class="name">Tình trạng: <%= posts[i].status %> </h4>
+									<h4 class="name">Loại sản phẩm: <%= posts[i].categoryId %> </h4>
+									<h4 class="name">Địa điểm: <%= posts[i].location %> </h4>
+									<h4 class="name">Người đăng: <%= posts[i].userId %> </h4>
 									<p class="description">
-										Mô tar ản rnrjngrngrng rgrnrtnb t btbitnbn brivnenvie venvnevne rvneivniernve rv rvnernvier venvren
+										<%= posts[i].detail %>
 									</p>
 								</div>
 							</div>
@@ -91,36 +63,14 @@
 									<a class="btn btn-primary" href="#">Xem trước</a>
 								</div>
 								<div class="col-lg-9 text-right">
-									<button class="btn btn-primary mx-1" data-id="1">Chấp nhận</button>
-									<button class="btn btn-warning mx-1" data-id="2">Từ chối</button>
-								</div>
-							</div>
-						</div>
-						<div class="pending-post border p-2 w-100">
-							<p>Lúc <b>11:30 30/04/1975</b></p>
-							<div class="row">
-								<div class="col-lg-3 post-img">
-									<img src="/images/1.jpg" width="100%">
-								</div>
-								<div class="col-lg-9">
-									<h4 class="name">Tên sản phẩm</h4>
-									<a href="#">Loại sản phẩm</a>
-									<p class="description">
-										Mô tar ản rnrjngrngrng rgrnrtnb t btbitnbn brivnenvie venvnevne rvneivniernve rv rvnernvier venvren
-									</p>
-								</div>
-							</div>
-							<div class="row my-2">
-								<div class="col-lg-3 text-left">
-									<a class="btn btn-primary" href="#">Xem trước</a>
-								</div>
-								<div class="col-lg-9 text-right">
-									<button class="btn btn-primary mx-1" data-id="1">Chấp nhận</button>
+									<a href="/accept-post/<%= posts[i]._id %>" class="btn btn-primary mx-1" data-id="1">Chấp nhận</a>
 									<button class="btn btn-warning mx-1" data-id="2">Từ chối</button>
 								</div>
 							</div>
 						</div>
 					</div>
+					<% } %>
+
 					<div class="row px-3 text-center">
 						<nav aria-label="Page navigation example">
 							<ul class="pagination">
