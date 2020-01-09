@@ -25,22 +25,25 @@
                     </div>
                     <form class="login100-form validate-form">
                         <span class="login100-form-title">Admin Login</span>
+                        <div class="alert alert-danger login-fail" role="alert" style="display: none">
+                            Tài khoản hoặc mật khẩu không chính xác
+                        </div>
                         <div class="wrap-input100 validate-input" data-validate="Username is required">
-                            <input class="input100" type="text" name="email" placeholder="Username">
+                            <input class="input100" type="text" name="username" placeholder="Username">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                             </span>
                         </div>
                         <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="Password">
+                            <input class="input100" type="password" name="password" placeholder="Password">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
                             </span>
                         </div>
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
+                            <button type="button" class="login100-form-btn btn-login">
                             Login
                             </button>
                         </div>
@@ -49,11 +52,11 @@
             </div>
         </div>
 
-        <script src="vendor/jquery/jquery-3.2.1.min.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
-        <script src="vendor/bootstrap/js/popper.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
-        <script src="vendor/select2/js/select2.min.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
-        <script src="vendor/tilt/tilt.jquery.min.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
+        <script src="/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="/vendor/bootstrap/js/popper.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/vendor/select2/js/select2.min.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
+        <script src="/vendor/tilt/tilt.jquery.min.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
         <script type="ac3e8b5ccac4c44c2f2719a2-text/javascript">
             $('.js-tilt').tilt({
                 scale: 1.1
@@ -68,5 +71,35 @@
         </script>
         <script src="javascripts/login.js" type="ac3e8b5ccac4c44c2f2719a2-text/javascript"></script>
         <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="ac3e8b5ccac4c44c2f2719a2-|49" defer=""></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.btn-login').click(function(){
+                    var username = $('input[name="username"]').val();
+                    var password = $('input[name="password"]').val();
+                    $.ajax({
+                        url: '/admin/login',
+                        type:'post',
+                        data:{username:username,password:password},
+                    }).done(function(res){
+                        // console.log(res);
+                        location.href='/';
+
+                    }).fail(function(res){
+                        var ms = res.responseJSON;
+                        if(res.status==401){
+                            $('.login-fail').html('Tài khoản hoặc mật khẩu không chính xác').show();
+                        }
+                        else if(res.status==400){
+                            $('.login-fail').html('Vui lòng nhập đủ thông tin').show();
+                        }
+                        else{
+                            alert('Lỗi. Thử lại sau!');
+                        }
+                    })
+                });
+
+            })
+
+        </script>
     </body>
 </html>
