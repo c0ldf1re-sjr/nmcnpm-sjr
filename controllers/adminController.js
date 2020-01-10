@@ -74,3 +74,23 @@ exports.acceptPost = function(req, res, next) {
 		});
 	});
 }
+
+exports.rejectPost = function(req, res, next) {
+	Product.findByIdAndUpdate(req.params.id, {pending: 0}, (err, raw) => {
+		Product.find({ deleted_at: null, pending: 1 }, (err, docs) => {
+			res.render('pending_post', { posts: docs });
+		});
+	});
+}
+
+exports.getRejectedPosts = function(req, res, next) {
+	Product.find({ deleted_at: null, pending: 0 }, (err, docs) => {
+		res.render('rejected_post', { posts: docs });
+	});
+}
+
+exports.getAcceptedPosts = function(req, res, next) {
+	Product.find({ deleted_at: null, pending: 2 }, (err, docs) => {
+		res.render('accepted_post', { posts: docs });
+	});
+}
