@@ -51,10 +51,10 @@ router.get('/add-admin', function (req, res, next) {
 router.get('/pending-post', function (req, res, next) {
 	if (req.isAuthenticated()) {
 		if (req.user.role == 1) {
-			return res.redirect('/pending-post');
+			return next();
 		}
 		else {
-			return res.render('index');
+			return res.redirect('/');
 		}
 	}
 	else {
@@ -65,10 +65,10 @@ router.get('/pending-post', function (req, res, next) {
 router.get('/rejected-post', function (req, res, next) {
 	if (req.isAuthenticated()) {
 		if (req.user.role == 1) {
-			return res.redirect('/rejected-post');
+			return next();
 		}
 		else {
-			return res.render('index');
+			return res.redirect('/');
 		}
 	}
 	else {
@@ -80,10 +80,10 @@ router.get('/rejected-post', function (req, res, next) {
 router.get('/accepted-post', function(req, res, next) {
 	if(req.isAuthenticated()){
 		if(req.user.role==1){
-			return res.redirect('/accepted-post');
+			return next();
 		}
 		else{
-			return res.render('index');
+			return res.redirect('/');
 		}
 	}
 	else{
@@ -108,5 +108,10 @@ router.get('/reject-post/:id', function(req, res, next) {
 		return res.redirect('/login');
 	}
 } ,adminController.rejectPost);
+
+router.get('/logout', (req, res, next) => {
+	req.logOut();
+	res.redirect('/login');
+})
 
 module.exports = router;

@@ -9,6 +9,8 @@ var MongoStore =require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
+var superadminRouter = require('./routes/superadmin');
+
 
 let mongoose = require('mongoose');
 require('dotenv').config();
@@ -52,6 +54,7 @@ app.use(function(req,res,next){
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/superadmin',superadminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

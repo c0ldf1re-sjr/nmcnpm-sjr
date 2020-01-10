@@ -61,7 +61,7 @@ exports.logoutUser = (req, res) => {
 }
 
 exports.getPendingPosts = function (req, res, next) {
-	Product.find({ deleted_at: null, pending: 1 }, (err, docs) => {
+	Product.find({ deleted_at: null, pending: 1, categoryId: req.user.categoryId }, (err, docs) => {
 		res.render('pending_post', { posts: docs });
 	});
 }
@@ -84,13 +84,13 @@ exports.rejectPost = function(req, res, next) {
 }
 
 exports.getRejectedPosts = function(req, res, next) {
-	Product.find({ deleted_at: null, pending: 0 }, (err, docs) => {
+	Product.find({ deleted_at: null, pending: 0, categoryId: req.user.categoryId }, (err, docs) => {
 		res.render('rejected_post', { posts: docs });
 	});
 }
 
 exports.getAcceptedPosts = function(req, res, next) {
-	Product.find({ deleted_at: null, pending: 2 }, (err, docs) => {
+	Product.find({ deleted_at: null, pending: 2, categoryId: req.user.categoryId }, (err, docs) => {
 		res.render('accepted_post', { posts: docs });
 	});
 }
