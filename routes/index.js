@@ -43,9 +43,6 @@ router.get('/edit-admin', function(req, res, next) {
 	res.render('edit-admin');
 });
 
-router.get('/add-admin', function(req, res, next) {
-	res.render('add-admin');
-});
 
 
 router.get('/pending-post', adminController.getPendingPosts);

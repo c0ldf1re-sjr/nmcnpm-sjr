@@ -25,7 +25,7 @@ var adminSchema = mongoose.Schema({
 		default:1,
 	},
 	categoryId:{
-		type:Schema.Types.ObjectId,
+		type:String,
 		ref: 'Category',
 		default:null
 	},
@@ -43,6 +43,16 @@ var Admin = mongoose.model('Admin', adminSchema);
 
 module.exports = Admin;
 
+module.exports.createAdmin = function (newAdmin, callBack) {
+	var bcrypt = require('bcryptjs');
+	bcrypt.genSalt(10, function (err, salt) {
+		bcrypt.hash(newAdmin.password, salt, function (err, hash) {
+			newAdmin.password = hash;
+			newAdmin.save(callBack);
+		});
+	});
+}
+
 module.exports.comparePassword = function(candidatePassword, hash, callback){
 	bcrypt.compare(candidatePassword, hash, function (err, isMatch) {
 		if(err) throw err;
@@ -50,3 +60,12 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 	});
 }
 
+module.exports.editAndmin=function(adminid,categoryId,time){
+	 Admin.updateOne({ '_id': adminid }, { $set: { 'categoryId': categoryId,  'time': time } }, (err, doc) => {
+        if (err) {
+            console.log("update document error");
+        } else {
+            console.log("update document success");
+        }
+    });
+}

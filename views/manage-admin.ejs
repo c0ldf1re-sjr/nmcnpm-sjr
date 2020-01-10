@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="icon" type="image/png" href="images/icons/cholon-icon.ico"/>
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/fonts/circular-std/style.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <link rel="stylesheet" href="vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="icon" type="image/png" href="/images/icons/cholon-icon.ico"/>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/fonts/circular-std/style.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/vendor/fonts/fontawesome/css/fontawesome-all.css">
 
     <title>Quản lý QTV</title>
 </head>
@@ -35,7 +35,7 @@
                 <div class="container-fluid dashboard-content ">
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
-                    <!-- ============================================================== -->
+                    <!-- ==========================================/image==================== -->
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
@@ -49,30 +49,33 @@
                     <div class="row">
                         <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
                             <div class="row">
+                                	<%admins.forEach(function(admin){
+                                        %>
                                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="product-thumbnail">
                                         <div class="product-img-head">
                                             <div class="product-img">
-                                                <img src="images/12.jpg" alt="" class="img-fluid"></div>
+                                                <img src="/images/12.jpg" alt="" class="img-fluid"></div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-content-head">
-                                                <h3 class="admin-name">Viết Thanh</h3>
+                                                <h3 class="admin-name"><%=admin.fullname%></h3>
                                                 <div class="admin-age">Tuổi: 65</div>
-                                                <div class="admin-price">ID: 171200001</div>
+                                                <div class="admin-price"><%=admin._id%></div>
                                             </div>
                                             <div class="product-btn">
-                                                <a href="#" class="btn btn-primary">Chỉnh sửa</a>
+                                                <a href="edit-admin?id=<%=admin._id%>" class="btn btn-primary">Chỉnh sửa</a>
                                                 <a href="#" class="btn btn-outline-light">Xóa</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <% })%>
+                                <!-- <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="product-thumbnail">
                                         <div class="product-img-head">
                                             <div class="product-img">
-                                                <img src="images/5.jpg" alt="" class="img-fluid"></div>
+                                                <img src="/images/5.jpg" alt="" class="img-fluid"></div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-content-head">
@@ -83,7 +86,7 @@
                                             <div class="product-btn">
                                                 <a href="#" class="btn btn-primary">Chỉnh sửa</a>
                                                 <a href="#" class="btn btn-outline-light">Xóa</a>
-                                            </div>
+                                            </div>/image
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +94,7 @@
                                     <div class="product-thumbnail">
                                         <div class="product-img-head">
                                             <div class="product-img">
-                                                <img src="images/6.jpg" alt="" class="img-fluid"></div>
+                                                <img src="/images/6.jpg" alt="" class="img-fluid"></div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-content-head">
@@ -105,12 +108,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                </div> -->
+                                <!-- <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="product-thumbnail">
                                         <div class="product-img-head">
                                             <div class="product-img">
-                                                <img src="images/7.jpg" alt="" class="img-fluid"></div>
+                                                <img src="//images/7.jpg" alt="" class="img-fluid"></div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-content-head">
@@ -127,9 +130,28 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="product-thumbnail">
+                                        <div class="product-img-hea/image" >
+                                                <img src="/images/3.jpg" alt="" class="img-fluid"></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="admin-name">T-Shirt Product Title</h3>
+                                                <div class="admin-age">Tuổi: 65</div>
+                                                <div class="admin-price">ID: 171200001</div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Chỉnh sửa</a>
+                                                <a href="#" class="btn btn-outline-light">Xóa</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div> -->
+                                <!-- </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
                                         <div class="product-img-head">
-                                            <div class="product-img" >
-                                                <img src="images/3.jpg" alt="" class="img-fluid"></div>
+                                            <div class="product-img">
+                                                <img src="/images/10.jpg" alt="" class="img-fluid"></div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-content-head">
@@ -148,7 +170,26 @@
                                     <div class="product-thumbnail">
                                         <div class="product-img-head">
                                             <div class="product-img">
-                                                <img src="images/10.jpg" alt="" class="img-fluid"></div>
+                                                <img src="/images/1.jpg" alt="" class="img-fluid"></div>
+                                        </div>
+                                        <div class="product-content/image">
+                                            <div class="product-content-head">
+                                                <h3 class="admin-name">T-Shirt Product Title</h3>
+                                                <div class="admin-age">Tuổi: 65</div>
+                                                <div class="admin-price">ID: 171200001</div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Chỉnh sửa</a>
+                                                <a href="#" class="btn btn-outline-light">Xóa</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="/images/9.jpg" alt="" class="img-fluid"></div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-content-head">
@@ -167,45 +208,7 @@
                                     <div class="product-thumbnail">
                                         <div class="product-img-head">
                                             <div class="product-img">
-                                                <img src="images/1.jpg" alt="" class="img-fluid"></div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-content-head">
-                                                <h3 class="admin-name">T-Shirt Product Title</h3>
-                                                <div class="admin-age">Tuổi: 65</div>
-                                                <div class="admin-price">ID: 171200001</div>
-                                            </div>
-                                            <div class="product-btn">
-                                                <a href="#" class="btn btn-primary">Chỉnh sửa</a>
-                                                <a href="#" class="btn btn-outline-light">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
-                                    <div class="product-thumbnail">
-                                        <div class="product-img-head">
-                                            <div class="product-img">
-                                                <img src="images/9.jpg" alt="" class="img-fluid"></div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-content-head">
-                                                <h3 class="admin-name">T-Shirt Product Title</h3>
-                                                <div class="admin-age">Tuổi: 65</div>
-                                                <div class="admin-price">ID: 171200001</div>
-                                            </div>
-                                            <div class="product-btn">
-                                                <a href="#" class="btn btn-primary">Chỉnh sửa</a>
-                                                <a href="#" class="btn btn-outline-light">Xóa</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
-                                    <div class="product-thumbnail">
-                                        <div class="product-img-head">
-                                            <div class="product-img">
-                                                <img src="images/11.jpg" alt="" class="img-fluid"></div>
+                                                <img src="/images/11.jpg" alt="" class="img-fluid"></div>
                                         </div>
                                         <div class="product-content">
                                             <div class="product-content-head">
@@ -219,7 +222,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination">
@@ -321,13 +324,13 @@
         <!-- ============================================================== -->
         <!-- Optional JavaScript -->
         <!-- jquery 3.3.1 -->
-        <script src="vendor/jquery/jquery-3.3.1.min.js"></script>
+        <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
         <!-- bootstap bundle js -->
-        <script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
         <!-- slimscroll js -->
-        <script src="vendor/slimscroll/jquery.slimscroll.js"></script>
+        <script src="/vendor/slimscroll/jquery.slimscroll.js"></script>
         <!-- main js -->
-        <script src="javascripts/main-js.js"></script>
+        <script src="/javascripts/main-js.js"></script>
 </body>
  
 </html>
